@@ -1,36 +1,13 @@
 #include "main.h"
 
 /**
- * print_revstr - function that prints a string in reverse
- * @arg: argument inputted
- * Return: count
- */
-int print_revstr(va_list arg)
-{
-	char *s;
-	int i;
-	int j;
-
-	s = va_arg(arg, char*);
-	j = 0;
-	if (s == NULL)
-		s = "(null)";
-	while (s[j] != '\0')
-		j++;
-	for (i  = j - 1; i >= 0; i--)
-		_putchar(s[i]);
-	return (j);
-}
-
-/**
- * print_Rot13 - Converts string to rot13
- * @arg: string to convert
+ * rot13 - Converts string to rot13
+ * @list: string to convert
  * Return: converted string
  */
-
-int print_Rot13(va_list arg)
+int rot13(va_list list)
 {
-	iot i;
+	int i;
 	int x;
 	char *str;
 	char s[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";

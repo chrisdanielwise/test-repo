@@ -1,43 +1,46 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef PRINT_F
+#define PRINT_F
 
-#include <stdarg.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <limits.h>
 #include <unistd.h>
+#include <stdlib.h>
+#include <stdarg.h>
 
 /**
- * struct convt_specifier - function to check for formats
- * @id: identifies the format to print
- * @f: The ponter to funtion corresponding with format
- */
-typedef struct convt_specifier
+* struct convert - defines a structure for symbols and functions
+*
+* @sym: The operator
+* @f: The function associated
+*/
+struct convert
 {
-	char *id;
-	int (*f)(va_list arg);
-} cnv_t;
+	char *sym;
+	int (*f)(va_list);
+};
+typedef struct convert conver_t;
 
-/* Main protos*/
+/*Main functions*/
+int parser(const char *format, conver_t f_list[], va_list arg_list);
 int _printf(const char *format, ...);
-int _putchar(char c);
+int _write_char(char);
+int print_char(va_list);
+int print_string(va_list);
+int print_percent(va_list);
+int print_integer(va_list);
+int print_number(va_list);
+int print_binary(va_list);
+int print_reversed(va_list arg);
+int rot13(va_list);
+int unsigned_integer(va_list);
+int print_octal(va_list list);
+int print_hex(va_list list);
+int print_heX(va_list list);
 
-/*conversion specifiers*/
-int print_char(va_list arg);
-int print_string(va_list arg);
-int print_percent(va_list arg);
-int print_int(va_list arg);
-int print_dec(va_list arg);
-int print_bin(va_list arg);
-int print_hex(va_list arg);
-int print_Hex(va_list arg);
-int print_oct(va_list arg);
-int print_unsgnint(va_list arg);
-int print_pointer(va_list arg);
-int print_revstr(va_list arg);
-int print_Rot13(va_list arg);
+/*Helper functions*/
+unsigned int base_len(unsigned int, int);
+char *rev_string(char *);
+void write_base(char *str);
+char *_memcpy(char *dest, char *src, unsigned int n);
+int print_unsgined_number(unsigned int);
 
-/*Helping protos*/
-int hex_cnv(unsigned int n, unsigned int hex, char letter);
 
 #endif
