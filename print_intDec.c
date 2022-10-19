@@ -74,7 +74,7 @@ int print_dec(va_list arg)
 }
 
 /**
- * print_dec - This function prints decimal
+ * print_unsgnint - This function prints an unsigned int
  * @arg: argument to print
  * Return: number of characters printed
  */
